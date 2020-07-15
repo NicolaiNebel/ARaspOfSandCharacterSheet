@@ -124,6 +124,7 @@ export var allItems = {
         { type: "generalItem", name: "Horn", slot: 1 },
         { type: "generalItem", name: "Hourglass", slot: 1 },
         { type: "generalItem", name: "Instrument", slot: 1 },
+        { type: "generalItem", name: "Jerky", slot: 1 },
         { type: "generalItem", name: "Lantern and Blubber Oil(light for 1 floor)", slot: 1 },
         { type: "generalItem", name: "Lens", slot: 1 },
         { type: "generalItem", name: "Lockpick", slot: 1 },
