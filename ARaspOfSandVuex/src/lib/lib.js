@@ -501,14 +501,27 @@ export function newXp(xp, died) {
     return died ? Math.floor(xp / 6) : xp;
 }
 
+function maxHp() {
+    const roll = rollD(8);
+
+    if (roll >= 5) {
+        return roll;
+    }
+    else {
+        return rollD(8);
+    }
+}
+
 export function rollNewInventory(archmage) {
-    //return [weapon(), armor(), helmetAndShield(), generalGear1(), generalGear2(), dungeoneeringGear(archmage)].flat();
-    return [weapon(), armor(), helmetAndShield(), generalGear1(), generalGear2(), dungeoneeringGear(archmage), slug(), spellpearl(1, archmage)].flat();
+    return [weapon(), armor(), helmetAndShield(), generalGear1(), generalGear2(), dungeoneeringGear(archmage)].flat();
+    //return [weapon(), armor(), helmetAndShield(), generalGear1(), generalGear2(), dungeoneeringGear(archmage), slug(), spellpearl(1, archmage)].flat();
 }
 
 export function rollNewCharacter(name, character, died, keepProfession, heirloomItem) {
     const newProf = newProfession(character.profession, keepProfession);
     const archmage = isEqual(newProf, { type: 'Magician', level: 5 });
+
+    const hp = maxHp();
 
     return {
         name: name,
@@ -529,6 +542,8 @@ export function rollNewCharacter(name, character, died, keepProfession, heirloom
         passion: passion(),
 
         xp: newXp(character.xp, died),
+        hp: hp,
+        currentHp: hp,
         profession: newProf,
 
         inventory: rollNewInventory(archmage).concat(heirloomItem ? [heirloomItem] : []),
