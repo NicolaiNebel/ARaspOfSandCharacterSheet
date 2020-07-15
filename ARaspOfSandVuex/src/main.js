@@ -46,7 +46,11 @@ const store = new Vuex.Store({
     mutations: {
         setCharacter: (state, newCharacter) => state.character = newCharacter,
 
-        increment: state => state.id++,
+        initializeFamily: (state, name) => {
+            state.family.initialized = true;
+            state.family.lastName = name;
+            state.family.ancestorList = [];
+        },
 
         itemThrowAway: (state, item) => {
             var inv = state.character.inventory;

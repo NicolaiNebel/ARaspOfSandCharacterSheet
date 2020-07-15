@@ -1,6 +1,6 @@
 ﻿<template>
     <div>
-        <h3> {{character.name }}</h3>
+        <h3> {{character.name }} {{ family.lastName }}</h3>
         <div class="row">
             <div class="col-6">
                 <b>HP: {{ character.currentHp }} / {{ character.hp }}</b>
@@ -112,7 +112,7 @@
             }
         },
         computed: {
-            ...mapState(['character']),
+            ...mapState(['character', 'family']),
             ...mapGetters(['encumbrance', 'carryingCapacity', 'level', 'morale'
                 , 'strBonus', 'dexBonus', 'conBonus', 'intBonus', 'wisBonus', 'chaBonus',]),
         }

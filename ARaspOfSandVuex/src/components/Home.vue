@@ -1,19 +1,26 @@
 <template>
     <div class="container">
-        <div class="home">
-            <RollNewCharacter />
+        <Splash v-if="state === 'splash'" @next="toMain"/>
+        <div v-else-if="state === 'main'">
+            <div class="home">
+                <RollNewCharacter />
+            </div>
+            <br />
+            <div class="character-sheet">
+                <CharacterSheet />
+            </div>
         </div>
-        <br />
-        <div class="character-sheet">
-            <CharacterSheet />
+        <div v-else>
+            Error
         </div>
     </div>
+
 </template>
 
 <script>
-import RollNewCharacter from "./RollNewCharacter.vue"
-import CharacterSheet from "./CharacterSheet.vue"
-import { mapMutations } from 'vuex'
+    import RollNewCharacter from "./RollNewCharacter.vue"
+    import CharacterSheet from "./CharacterSheet.vue"
+    import Splash from "./Splash.vue"
 
     export default {
         name: 'Home',
@@ -21,14 +28,17 @@ import { mapMutations } from 'vuex'
         components: {
             RollNewCharacter,
             CharacterSheet,
+            Splash,
         },
-
         props: {
         },
-        computed: {
+        data: function () {
+            return {
+                state: "splash",
+            }
         },
         methods: {
-            ...mapMutations(['increment']),
+            toMain: function () { this.state = 'main'; },
         }
     };
 </script>
