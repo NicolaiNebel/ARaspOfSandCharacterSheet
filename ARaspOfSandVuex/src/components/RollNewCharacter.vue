@@ -10,18 +10,10 @@
         <div v-else-if="state === 'heirloom_stash'">
             <p>Pick the items you want to keep in your Heirloom Stash:</p>
 
-            <div class="row">
-                <select v-if="died" class="col-8" name="storeItems" v-model="storeItems">
-                    <option v-for="item in character.inventory" :value="[item]">{{ item.name }}</option>
-                </select>
-                <select v-else multiple class="col-8" name="storeItems" v-model="storeItems">
-                    <option v-for="item in character.inventory" :value="item">{{ item.name }}</option>
-                </select>
-
-                <button class="col-4 btn btn-primary" @click="heirloom_stash">Confirm</button>
-
-            </div>
+            <StoreItemsSingle   v-if="died" @next="heirloom_stash" />
+            <StoreItemsMultiple v-else      @next="heirloom_stash" />
         </div>
+
         <div v-else-if="state === 'heirloom_item'">
             <p>Pick the item you want to carry over as an Heirloom:</p>
             <select class="col-8" name="heirloomItem" v-model="heirloomItem">
@@ -49,11 +41,19 @@
 </template>
 
 <script>
+    import StoreItemsSingle from './RollNewCharacter/StoreItemsSingle.vue'
+    import StoreItemsMultiple from './RollNewCharacter/StoreItemsMultiple.vue'
+
     import { mapState, mapMutations } from 'vuex'
     import * as lib from "../lib/lib.js"
 
     export default {
         name: "RollNewCharacter",
+
+        components: {
+            StoreItemsSingle,
+            StoreItemsMultiple,
+        },
 
         data: function () {
             return {
@@ -107,7 +107,9 @@
             },
 
             //state heirloom_stash
-            heirloom_stash: function () {
+            heirloom_stash: function (storeItems) {
+                console.log(storeItems);
+                this.storeItems = storeItems;
                 this.state = "heirloom_item";
             },
 

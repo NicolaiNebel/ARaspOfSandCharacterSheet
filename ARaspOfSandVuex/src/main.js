@@ -122,7 +122,13 @@ const store = new Vuex.Store({
         morale: function (_state, getters) { return getters.conBonus + getters.wisBonus + 5; },
 
         encumbrance: function (state) { return state.character.inventory.map(x => x.slot).reduce((a, b) => a + b, 0); },
-        carryingCapacity: function (state) { return state.character.stats.str },
+        carryingCapacity: function (state) {
+            var ret = state.character.stats.str;
+            if (state.character.profession.type === 'merchant' && state.character.profession.level >= 3) {
+                ret += state.character.profession.level;
+            }
+            return ret;
+        },
 
         archmage: (state) => isEqual(state.character.profession, { type: 'Magician', level: 5 }),
     },

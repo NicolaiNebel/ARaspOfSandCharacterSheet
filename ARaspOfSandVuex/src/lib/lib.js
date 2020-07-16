@@ -82,11 +82,13 @@ export var allItems = {
         { type: "meleeWeapon", name: "Mace", damage: { n: 1, d: 8, type: "bludgeon" }, hand: 1, slot: 2, quality: 3 },
         { type: "meleeWeapon", name: "Sickle", damage: { n: 1, d: 6, type: "slash" }, hand: 1, slot: 1, quality: 3 },
         { type: "meleeWeapon", name: "Spear", damage: { n: 1, d: 8, type: "pierce" }, hand: 1, slot: 2, quality: 3 },
+        { type: "meleeWeapon", name: "Butcher's cleaver", damage: { n: 1, d:10 }, hand: 2, slot: 2, quality: 3 }
     ],
     rangedWeapon: [
         { type: "rangedWeapon", name: "Bow", ammo: "Arrows", damage: { n: 1, d: 6 }, slot: 2, hand: 2, quality: 3 },
         { type: "rangedWeapon", name: "Crossbow", ammo: "Bolts", damage: { n: 1, d: 8 }, slot: 3, hand: 2, quality: 3 },
         { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2 },
+        { type: "rangedWeapon", name: "Harpoonbow", ammo: "Harpoonbow Shots", damage: { n:1, d: 10 }, slot: 4, hand: 2, quality: 3 }
     ],
     armor: [
         { type: "armor", name: "Canvas tunic", defense: 12, slot: 1, quality: 3 },

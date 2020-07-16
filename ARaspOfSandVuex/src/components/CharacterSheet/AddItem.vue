@@ -1,6 +1,6 @@
 ﻿<template>
     <div class="row">
-        <select class="col-8" name="addItem" v-model="selectedItem">
+        <select class="col-8" id="addItem" name="addItem" v-model="selectedItem">
             <option key="default" disabled value="">Please select one</option>
             <optgroup :label="key" :key="index" v-for="(key, index) in Object.keys(selectOptions)">
                 <option :value="value" :key="idx" v-for="(value, idx) in selectOptions[key]">{{ value.name }}</option>
@@ -12,9 +12,17 @@
 
 <script>
     import { mapMutations, mapState } from 'vuex';
-    import * as lib from "../../lib/lib.js"
+    import * as lib from "../../lib/lib.js";
+    import $ from 'jquery';
+    import 'selectize';
 
     export default {
+        mounted: function () {
+            this.$nextTick(function () {
+                //$('#addItem').selectize({});
+            })
+        },
+
         data: function () {
             return {
                 selectedItem: "",

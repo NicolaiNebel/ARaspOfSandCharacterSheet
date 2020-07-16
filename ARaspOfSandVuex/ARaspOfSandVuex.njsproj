@@ -45,6 +45,12 @@
     <Content Include="src\components\CharacterSheet\Inventory\ItemUtils\ThrowAway.vue">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\components\RollNewCharacter\StoreItemsMultiple.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\RollNewCharacter\StoreItemsSingle.vue">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\components\Splash.vue">
       <SubType>Code</SubType>
     </Content>
@@ -89,6 +95,7 @@
     <Folder Include="src\components\CharacterSheet\Inventory\" />
     <Folder Include="src\components\CharacterSheet\" />
     <Folder Include="src\components\CharacterSheet\Inventory\ItemUtils\" />
+    <Folder Include="src\components\RollNewCharacter\" />
     <Folder Include="src\lib\" />
   </ItemGroup>
   <ItemGroup>
