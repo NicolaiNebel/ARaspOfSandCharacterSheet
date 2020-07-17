@@ -70,7 +70,7 @@
         },
 
         methods: {
-            ...mapMutations(['setCharacter', 'pushToHeirloomStash', 'removeFromHeirloomStash']),
+            ...mapMutations(['setCharacter', 'pushToHeirloomStash', 'removeFromHeirloomStash', 'updateProfessionLevel']),
 
             reset: function () {
                 this.died = false;
@@ -97,7 +97,7 @@
 
                     this.heirloomItems.forEach((item) => { this.removeFromHeirloomStash(item) });
 
-                    this.updateProfessionLevel(newProfession);
+                    this.updateProfessionLevel(this.newProfession);
 
                     this.reset();
                 }
@@ -115,7 +115,7 @@
 
             //state profession
             profession: function () {
-                this.newProfession = lib.newProfession(this.character.profession, this.keepProfession);
+                this.newProfession = lib.newProfession(this.character.profession, this.keepProfession, this.professionLevels);
                 this.state = "heirloom_stash"
             },
 
@@ -134,7 +134,7 @@
         },
 
         computed: {
-            ...mapState(['character', 'heirloomStash']),
+            ...mapState(['character', 'heirloomStash', 'professionLevels']),
             validated: function () {
                 return this.name.length > 0;
             },

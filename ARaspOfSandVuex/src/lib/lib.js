@@ -494,6 +494,13 @@ export function newProfession(oldProfession, keepProfession, professionLevels) {
         }
     } else {
         const prof = profession();
+        console.log(prof);
+
+        console.log({
+            type: prof,
+            level: professionLevels[prof],
+        });
+
         return {
             type: prof,
             level: professionLevels[prof],

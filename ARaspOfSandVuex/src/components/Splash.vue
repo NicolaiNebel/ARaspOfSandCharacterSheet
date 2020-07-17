@@ -18,7 +18,7 @@
             }
         },
         computed: {
-            ...mapState(['character']),
+            ...mapState(['character', 'professionLevels']),
             validatedSplash: function () {
                 return (this.characterName.length > 0) && (this.familyName.length > 0)
             },
@@ -32,8 +32,8 @@
                     this.setCharacter(lib.rollNewCharacter(
                         this.characterName,
                         this.character,
-                        lib.newProfession(this.character.profession, false),
                         false,
+                        lib.newProfession(this.character.profession, false, this.professionLevels),
                         [],
                     ));
 
