@@ -32,9 +32,9 @@
                     this.setCharacter(lib.rollNewCharacter(
                         this.characterName,
                         this.character,
+                        lib.newProfession(this.character.profession, false),
                         false,
-                        false,
-                        undefined,
+                        [],
                     ));
 
                     this.$emit('next');

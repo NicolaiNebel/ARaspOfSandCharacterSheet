@@ -42,6 +42,21 @@ const store = new Vuex.Store({
         family: { initialized: false, lastName: "", ancestorList: [] },
         heirloomStash: [],
         id: 1,
+
+        professionLevels: {
+            "Academic": 1,
+            "Cook": 1,
+            "Entertainer": 1,
+            "Fisher": 1,
+            "Magician": 1,
+            "Merchant": 1,
+            "Priest": 1,
+            "Sailor": 1,
+            "Slug Rancher": 1,
+            "Smith": 1,
+            "Smuggler": 1,
+            "Warrior": 1,
+        }
     },
     mutations: {
         setCharacter: (state, newCharacter) => state.character = newCharacter,
@@ -108,6 +123,8 @@ const store = new Vuex.Store({
                 state.heirloomStash = heirloomStash.slice(0, idx).concat(heirloomStash.slice(idx + 1, heirloomStash.length));
             }
         },
+
+        updateProfessionLevel: (state, prof) => state.professionLevels[prof.type] = prof.level,
     },
     getters: {
         strBonus: function (state) { return state.character.stats.str - 10; },
@@ -121,10 +138,10 @@ const store = new Vuex.Store({
 
         morale: function (_state, getters) { return getters.conBonus + getters.wisBonus + 5; },
 
-        encumbrance: function (state) { return state.character.inventory.map(x => x.slot).reduce((a, b) => a + b, 0); },
+        encumbrance: function (state) { console.log(state.character.inventory); return state.character.inventory.map(x => x.slot).reduce((a, b) => a + b, 0); },
         carryingCapacity: function (state) {
             var ret = state.character.stats.str;
-            if (state.character.profession.type === 'merchant' && state.character.profession.level >= 3) {
+            if (state.character.profession.type === 'Merchant' && state.character.profession.level >= 3) {
                 ret += state.character.profession.level;
             }
             return ret;

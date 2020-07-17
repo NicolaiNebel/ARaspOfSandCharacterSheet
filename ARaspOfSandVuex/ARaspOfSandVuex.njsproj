@@ -45,6 +45,12 @@
     <Content Include="src\components\CharacterSheet\Inventory\ItemUtils\ThrowAway.vue">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\components\RollNewCharacter\SelectOneHeirloom.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\RollNewCharacter\SelectTwoHeirlooms.vue">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\components\RollNewCharacter\StoreItemsMultiple.vue">
       <SubType>Code</SubType>
     </Content>

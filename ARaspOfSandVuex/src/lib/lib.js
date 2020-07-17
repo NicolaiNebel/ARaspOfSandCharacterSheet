@@ -486,16 +486,17 @@ export function spellpearl(L, archmage=false, idx = undefined) {
     return ret;
 }
 
-export function newProfession(oldProfession, keepProfession) {
+export function newProfession(oldProfession, keepProfession, professionLevels) {
     if (keepProfession && oldProfession.type !== 'N/A') {
         return {
             ...oldProfession,
             level: Math.min(5, oldProfession.level + 1),
         }
     } else {
+        const prof = profession();
         return {
-            type: profession(),
-            level: 1,
+            type: prof,
+            level: professionLevels[prof],
         }
     }
 }
@@ -520,8 +521,7 @@ export function rollNewInventory(archmage) {
     //return [weapon(), armor(), helmetAndShield(), generalGear1(), generalGear2(), dungeoneeringGear(archmage), slug(), spellpearl(1, archmage)].flat();
 }
 
-export function rollNewCharacter(name, character, died, keepProfession, heirloomItem) {
-    const newProf = newProfession(character.profession, keepProfession);
+export function rollNewCharacter(name, character, died, newProf, heirloomItems) {
     const archmage = isEqual(newProf, { type: 'Magician', level: 5 });
 
     const hp = maxHp();
@@ -549,6 +549,6 @@ export function rollNewCharacter(name, character, died, keepProfession, heirloom
         currentHp: hp,
         profession: newProf,
 
-        inventory: rollNewInventory(archmage).concat(heirloomItem ? [heirloomItem] : []),
+        inventory: rollNewInventory(archmage).concat(heirloomItems),
     };
 }

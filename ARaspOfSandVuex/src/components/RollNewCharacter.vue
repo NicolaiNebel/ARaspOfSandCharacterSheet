@@ -7,6 +7,14 @@
             <button class="btn btn-primary" @click="iRetired">I retired</button>
         </div>
 
+        <div v-else-if="state === 'profession'">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="checkProfession" v-model="keepProfession" />
+                <label class="form-check-label" for="checkProfession">Do you want to keep your profession?</label>
+            </div>
+            <button class="btn btn-primary" @click="profession">Continue</button>
+        </div>
+
         <div v-else-if="state === 'heirloom_stash'">
             <p>Pick the items you want to keep in your Heirloom Stash:</p>
 
@@ -15,20 +23,10 @@
         </div>
 
         <div v-else-if="state === 'heirloom_item'">
-            <p>Pick the item you want to carry over as an Heirloom:</p>
-            <select class="col-8" name="heirloomItem" v-model="heirloomItem">
-                <option key="default" disabled value=undefined>Please select one</option>
-                <option v-for="item in newHeirloomStash" :value="item">{{ item.name }}</option>
-            </select>
-            <button class="btn btn-primary" @click="heirloom_item">Confirm</button>
+            <SelectTwoHeirlooms v-if="canTakeTwoHeirlooms" :newHeirloomStash="newHeirloomStash" @next="heirloom_item" />
+            <SelectOneHeirloom  v-else                     :newHeirloomStash="newHeirloomStash" @next="heirloom_item" />
         </div>
-        <div v-else-if="state === 'profession'">
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="checkProfession" v-model="keepProfession" />
-                <label class="form-check-label" for="checkProfession">Do you want to keep your profession?</label>
-            </div>
-            <button class="btn btn-primary" @click="profession">Continue</button>
-        </div>
+
         <div v-else-if="state === 'roll_character'">
             Name: <input type="text" class="form-control" id="textName" v-model="name"/>
             <button class="btn btn-primary" @click="rollNewCharacter">Roll New Character!</button>
@@ -43,6 +41,8 @@
 <script>
     import StoreItemsSingle from './RollNewCharacter/StoreItemsSingle.vue'
     import StoreItemsMultiple from './RollNewCharacter/StoreItemsMultiple.vue'
+    import SelectOneHeirloom from './RollNewCharacter/SelectOneHeirloom.vue'
+    import SelectTwoHeirlooms from './RollNewCharacter/SelectTwoHeirlooms.vue'
 
     import { mapState, mapMutations } from 'vuex'
     import * as lib from "../lib/lib.js"
@@ -53,12 +53,15 @@
         components: {
             StoreItemsSingle,
             StoreItemsMultiple,
+            SelectOneHeirloom,
+            SelectTwoHeirlooms
         },
 
         data: function () {
             return {
                 died: false,
                 keepProfession: true,
+                newProfession: undefined,
                 name: "",
                 state: "start",
                 storeItems: [],
@@ -72,9 +75,10 @@
             reset: function () {
                 this.died = false;
                 this.keepProfession = true;
+                this.newProfession = undefined;
                 this.name = "";
                 this.storeItems = [];
-                this.heirloomItem = undefined;
+                this.heirloomItems = [];
 
                 this.state = "start";
             },
@@ -85,12 +89,15 @@
                     this.setCharacter(lib.rollNewCharacter( this.name
                                                           , this.character
                                                           , this.died
-                                                          , this.keepProfession
-                                                          , this.heirloomItem));
+                                                          , this.newProfession
+                                                          , this.heirloomItems));
 
                     // These *have* to follow each other like this
                     this.pushToHeirloomStash(this.storeItems);
-                    this.removeFromHeirloomStash(this.heirloomItem);
+
+                    this.heirloomItems.forEach((item) => { this.removeFromHeirloomStash(item) });
+
+                    this.updateProfessionLevel(newProfession);
 
                     this.reset();
                 }
@@ -99,29 +106,31 @@
             // State start
             iDied: function () {
                 this.died = true;
-                this.state = "heirloom_stash";
+                this.state = "profession";
             },
             iRetired: function () {
                 this.died = false;
-                this.state = "heirloom_stash";
+                this.state = "profession";
+            },
+
+            //state profession
+            profession: function () {
+                this.newProfession = lib.newProfession(this.character.profession, this.keepProfession);
+                this.state = "heirloom_stash"
             },
 
             //state heirloom_stash
             heirloom_stash: function (storeItems) {
-                console.log(storeItems);
                 this.storeItems = storeItems;
                 this.state = "heirloom_item";
             },
 
             //state heirloom_item
-            heirloom_item: function () {
-                this.state = "profession"
+            heirloom_item: function (heirloomItems) {
+                this.heirloomItems = heirloomItems;
+                this.state = "roll_character"
             },
 
-            //state profession
-            profession: function () {
-                this.state = "roll_character"
-            }
         },
 
         computed: {
@@ -133,6 +142,10 @@
             newHeirloomStash: function () {
                 return this.storeItems.concat(this.heirloomStash);
             },
+
+            canTakeTwoHeirlooms: function () {
+                return this.newProfession.type === 'Merchant' && this.newProfession.level >= 4;
+            }
         },
     }
 </script>
