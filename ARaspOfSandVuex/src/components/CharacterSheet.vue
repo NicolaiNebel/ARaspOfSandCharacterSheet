@@ -15,13 +15,16 @@
                 <br />
                 XP: {{ character.xp }}
                 <br />
-                <p> {{ character.profession.type }}, level {{ character.profession.level }} </p>
+                {{ character.profession.type }}, level {{ character.profession.level }}
+                <br />
+                Passion: {{ character.passion }} </p>
             </div>
         </div>
 
 
         <h4>Stats</h4>
         <StatBlock />
+        <Appearance />
 
         <br />
 
@@ -75,6 +78,8 @@
     import Slug from "./CharacterSheet/Inventory/Slug.vue"
 
     import StatBlock from "./CharacterSheet/StatBlock.vue"
+    import Appearance from "./CharacterSheet/Appearance.vue"
+
     import AddItem from "./CharacterSheet/AddItem.vue"
     import AddSpellPearl from "./CharacterSheet/AddSpellPearl.vue"
 
@@ -89,6 +94,7 @@
             SpellPearl,
             Slug,
             StatBlock,
+            Appearance,
             AddItem,
             AddSpellPearl,
         },

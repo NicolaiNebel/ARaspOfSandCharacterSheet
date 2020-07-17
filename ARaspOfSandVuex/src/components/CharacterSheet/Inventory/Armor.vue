@@ -1,11 +1,11 @@
 ﻿<template>
     <b-card>
         <h5 class="mt-0"> {{ item.name }} </h5>
-        Defense: {{ item.defense }}
-        <br />
-        Quality: {{ item.quality }}
-        <br />
-        Slot: {{ item.slot }}
+        <p> Defense: {{ item.defense }} </p>
+        <p> Quality: {{ item.quality }} </p>
+        <p> Slot: {{ item.slot }} </p>
+        <p v-if="item.note !== undefined"> Note: {{ item.note }} </p>
+        
         <div class="row ml-0">
             <ThrowAway :item="item"/>
             <DecrQuality :index="index"/>

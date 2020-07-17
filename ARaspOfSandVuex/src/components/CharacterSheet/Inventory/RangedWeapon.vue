@@ -12,19 +12,33 @@
         Slot: {{ item.slot }}
         <div class="row ml-0">
             <ThrowAway :item="item"/>
+            <DecrQuality :index="index"/>
+            <IncrQuality :index="index"/>
+            <br />
+            <AddWeaponTrait v-if="item.trait === undefined" :weapon="item" />
+            <RemoveWeaponTrait v-else                       :weapon="item" />
         </div>
     </b-card>
 </template>
 
 <script>
     import ThrowAway from './ItemUtils/ThrowAway.vue'
+    import DecrQuality from './ItemUtils/DecrQuality.vue'
+    import IncrQuality from './ItemUtils/IncrQuality.vue'
+    import AddWeaponTrait from './ItemUtils/AddWeaponTrait.vue'
+    import RemoveWeaponTrait from './ItemUtils/RemoveWeaponTrait.vue'
 
     export default {
         components: {
             ThrowAway,
+            DecrQuality,
+            IncrQuality,
+            AddWeaponTrait,
+            RemoveWeaponTrait,
         },
         props: {
             item: Object,
+            index: Number,
         },
     }
 </script>

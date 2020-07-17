@@ -42,7 +42,24 @@
     <Content Include="src\components\CharacterSheet\AddSpellPearl.vue">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="src\components\CharacterSheet\Appearance.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\CharacterSheet\Inventory\ItemUtils\AddWeaponTrait.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\CharacterSheet\Inventory\ItemUtils\DecrQuality.vue" />
+    <Content Include="src\components\CharacterSheet\Inventory\ItemUtils\IncrQuality.vue" />
+    <Content Include="src\components\CharacterSheet\Inventory\ItemUtils\RemoveWeaponTrait.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\CharacterSheet\Inventory\SlugEgg.vue">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\components\CharacterSheet\Inventory\ItemUtils\ThrowAway.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\CharacterSheet\Inventory\ItemUtils\PutInJar.vue">
       <SubType>Code</SubType>
     </Content>
     <Content Include="src\components\RollNewCharacter\SelectOneHeirloom.vue">

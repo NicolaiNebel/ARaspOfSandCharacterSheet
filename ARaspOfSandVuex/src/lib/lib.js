@@ -70,30 +70,46 @@ export function profession() {
     return table[rollD(12) - 1];
 }
 
+export var weaponTraits = {
+    "Scavenged": { name: "Scavenged Weapon", desc: "(Damage: [-], Quality: -2)" },
+    "Coral-crafted": { name: "Coral-crafted Weapon", desc: "(Damage: [+] Poison, Quality: +1)" },
+    "Kelp-sling": { name: "Kelp-sling Weapon", desc: "(Slot: -1, Quality: +1)" },
+    "Charged": { name: "Charged Weapon", desc: "(Damage: [+] Electric, Quality: +1, Glows faintly like a candle.)" },
+    "Vent-forged": { name: "Vent-forged Weapon", desc: "(Damage: [+] Heat, Quality: +1)" },
+    "Pressure-forged": { name: "Pressure-forged Weapon", desc: "(Damage: [+] Cold, Quality: +1)" },
+};
+
 export var allItems = {
     meleeWeapon: [
-        { type: "meleeWeapon", name: "Ax/Longsword", damage: { n: 1, d: 10, type: "slash" }, hand: 2, slot: 3, quality: 3 },
-        { type: "meleeWeapon", name: "Cudgel", damage: { n: 1, d: 6, type: "bludgeon" }, hand: 1, slot: 1, quality: 3 },
-        { type: "meleeWeapon", name: "Dagger", damage: { n: 1, d: 6, type: "pierce" }, hand: 1, slot: 1, quality: 3 },
-        { type: "meleeWeapon", name: "Eku", damage: { n: 1, d: 8, type: "slash or bludgeon" }, hand: 2, slot: 3, quality: 3 },
-        { type: "meleeWeapon", name: "Hammer", damage: { n: 1, d: 10, type: "bludgeon" }, hand: 2, slot: 3, quality: 3 },
-        { type: "meleeWeapon", name: "Hand ax/sword", damage: { n: 1, d: 8, type: "slash" }, hand: 1, slot: 2, quality: 3 },
-        { type: "meleeWeapon", name: "Harpoon", damage: { n: 1, d: 10, type: "pierce" }, hand: 2, slot: 3, quality: 3 },
-        { type: "meleeWeapon", name: "Mace", damage: { n: 1, d: 8, type: "bludgeon" }, hand: 1, slot: 2, quality: 3 },
-        { type: "meleeWeapon", name: "Sickle", damage: { n: 1, d: 6, type: "slash" }, hand: 1, slot: 1, quality: 3 },
-        { type: "meleeWeapon", name: "Spear", damage: { n: 1, d: 8, type: "pierce" }, hand: 1, slot: 2, quality: 3 },
-        { type: "meleeWeapon", name: "Butcher's cleaver", damage: { n: 1, d:10 }, hand: 2, slot: 2, quality: 3 }
+        { type: "meleeWeapon", name: "Ax/Longsword", damage: { n: 1, d: 10, type: "slash" }, hand: 2, slot: 3, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Cudgel", damage: { n: 1, d: 6, type: "bludgeon" }, hand: 1, slot: 1, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Dagger", damage: { n: 1, d: 6, type: "pierce" }, hand: 1, slot: 1, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Eku", damage: { n: 1, d: 8, type: "slash or bludgeon" }, hand: 2, slot: 3, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Hammer", damage: { n: 1, d: 10, type: "bludgeon" }, hand: 2, slot: 3, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Hand ax/sword", damage: { n: 1, d: 8, type: "slash" }, hand: 1, slot: 2, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Harpoon", damage: { n: 1, d: 10, type: "pierce" }, hand: 2, slot: 3, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Mace", damage: { n: 1, d: 8, type: "bludgeon" }, hand: 1, slot: 2, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Sickle", damage: { n: 1, d: 6, type: "slash" }, hand: 1, slot: 1, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Spear", damage: { n: 1, d: 8, type: "pierce" }, hand: 1, slot: 2, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Butcher's cleaver", damage: { n: 1, d: 10 }, hand: 2, slot: 2, quality: 3, trait: undefined },
     ],
     rangedWeapon: [
-        { type: "rangedWeapon", name: "Bow", ammo: "Arrows", damage: { n: 1, d: 6 }, slot: 2, hand: 2, quality: 3 },
-        { type: "rangedWeapon", name: "Crossbow", ammo: "Bolts", damage: { n: 1, d: 8 }, slot: 3, hand: 2, quality: 3 },
-        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2 },
-        { type: "rangedWeapon", name: "Harpoonbow", ammo: "Harpoonbow Shots", damage: { n:1, d: 10 }, slot: 4, hand: 2, quality: 3 }
+        { type: "rangedWeapon", name: "Bow", ammo: "Arrows", damage: { n: 1, d: 6 }, slot: 2, hand: 2, quality: 3, trait: undefined },
+        { type: "rangedWeapon", name: "Crossbow", ammo: "Bolts", damage: { n: 1, d: 8 }, slot: 3, hand: 2, quality: 3, trait: undefined },
+        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2, trait: undefined },
+        { type: "rangedWeapon", name: "Harpoonbow", ammo: "Harpoonbow Shots", damage: { n: 1, d: 10 }, slot: 4, hand: 2, quality: 3, trait: undefined }
     ],
     armor: [
         { type: "armor", name: "Canvas tunic", defense: 12, slot: 1, quality: 3 },
         { type: "armor", name: "Iron-scale mail", defense: 14, slot: 3, quality: 5 },
         { type: "armor", name: "Seal leather", defense: 13, slot: 2, quality: 4 },
+    ],
+    exoticArmor: [
+        { type: "armor", name: "Flotsam Armor (Pelagic)", defense: 13, slot: 3, quality: 2 },
+        { type: "armor", name: "Coral Plate (Reef)", defense: 15, slot: 3, quality: 5, note: "Resist: Poison" },
+        { type: "armor", name: "Kelp Robe (Kelp Forest)", defense: 12, slot: 2, quality: 3, note: "Resist: Spells" },
+        { type: "armor", name: "Bioluminescent Eel Armor (Twilight)", defense: 14, slot: 2, quality: 4, note: "Generates red light. Creatures of the Depths can’t see red light." },
+        { type: "armor", name: "Yeti 'Fur' Armor (Trench)", defense: 14, slot: 2, quality: 4, note: "Resist: Heat and Cold" },
     ],
     helmet: [
         { type: "helmet", name: "Helmet", defense: 1, slot: 1, quality: 1 },
@@ -103,6 +119,7 @@ export var allItems = {
     ],
     generalItem: [
         { type: "generalItem", name: "Airbladder", slot: 1 },
+        { type: "generalItem", name: "Academic's Kit", slot: 1 },
         { type: "generalItem", name: "Bear Trap", slot: 1 },
         { type: "generalItem", name: "Bellows", slot: 1 },
         { type: "generalItem", name: "Bottle", slot: 1 },
@@ -112,6 +129,7 @@ export var allItems = {
         { type: "generalItem", name: "Chain, 10ft", slot: 1 },
         { type: "generalItem", name: "Chalk, 10x", slot: 1 },
         { type: "generalItem", name: "Chisel", slot: 1 },
+        { type: "generalItem", name: "Cook's Kit", slot: 1 },
         { type: "generalItem", name: "Crowbar", slot: 1 },
         { type: "generalItem", name: "Dice Set", slot: 1 },
         { type: "generalItem", name: "Drill", slot: 1 },
@@ -122,6 +140,7 @@ export var allItems = {
         { type: "generalItem", name: "Glue", slot: 1 },
         { type: "generalItem", name: "Grappling Hook", slot: 1 },
         { type: "generalItem", name: "Grease", slot: 1 },
+        { type: "generalItem", name: "Gumbo", slot: 1 },
         { type: "generalItem", name: "Hammer", slot: 1 },
         { type: "generalItem", name: "Horn", slot: 1 },
         { type: "generalItem", name: "Hourglass", slot: 1 },
@@ -137,16 +156,19 @@ export var allItems = {
         { type: "generalItem", name: "Mirror", slot: 1 },
         { type: "generalItem", name: "Net", slot: 1 },
         { type: "generalItem", name: "Padlock", slot: 1 },
+        { type: "generalItem", name: "Pearl", slot: 1 },
         { type: "generalItem", name: "Perfume", slot: 1 },
         { type: "generalItem", name: "Pick", slot: 1 },
         { type: "generalItem", name: "Pole, 10ft", slot: 1 },
-        { type: "generalItem", name: "Pulleys", slot: 1 }, 
+        { type: "generalItem", name: "Pulleys", slot: 1 },
         { type: "generalItem", name: "Quill & Ink", slot: 1 },
         { type: "generalItem", name: "Random Scroll", slot: 1 },
         { type: "generalItem", name: "Rope, 50ft", slot: 1 },
         { type: "generalItem", name: "Sack", slot: 1 },
         { type: "generalItem", name: "Saw", slot: 1 },
+        { type: "generalItem", name: "Scrimshaw Kit", slot: 1 },
         { type: "generalItem", name: "Shovel", slot: 1 },
+        { type: "generalItem", name: "Slug Jar", slot: 0 },
         { type: "generalItem", name: "Small Bell", slot: 1 },
         { type: "generalItem", name: "Soap", slot: 1 },
         { type: "generalItem", name: "Spikes, 5", slot: 1 },
@@ -156,6 +178,7 @@ export var allItems = {
         { type: "generalItem", name: "Tongs", slot: 1 },
         { type: "generalItem", name: "Torch, 2x(light for 3 rooms)", slot: 1 },
         { type: "generalItem", name: "Twine", slot: 1 },
+        { type: "generalItem", name: "Weighted Net", slot: 1 },
         { type: "generalItem", name: "Whistle", slot: 1 },
     ],
     slug: [
@@ -179,40 +202,62 @@ export var allItems = {
         { type: "slug", name: "Slug: Violet w/ red cerata", slot: 1 },
         { type: "slug", name: "Slug: White w/ purple cerata", slot: 1 },
         { type: "slug", name: "Slug: Yellow w/ black speckles", slot: 1 },
-    ]
+    ],
+    slugEgg: [
+        { type: "slugEgg", name: "Slug Egg(s): Black w/ gold scaley cerata", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): Blue w/ yellow cerata", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): Brown w/ gray bumps", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): Cream w/ black speckles", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): Gold w/ black and white stripes", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): Gray w/ pink bumps", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): Green w/ black stripes", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): Indigo w/ yellow stripes", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): Lime w/ leaf green cerata", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): Orange w/ black cerata", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): Pink w/ translucent cerata", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): Purple w/ a white stripe", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): Red w/ maroon spots", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): Sky blue w/ dark blue stripes", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): Tan w/ brown cerata", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): Teal w/ red spots", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): Translucent white w/ blue cerata", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): Violet w/ red cerata", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): White w/ purple cerata", slot: 1, quantity: 1 },
+        { type: "slugEgg", name: "Slug Egg(s): Yellow w/ black speckles", slot: 1, quantity: 1 },
+    ],
 }
 
 function weapon() {
     var table = [
-        { type: "meleeWeapon", name: "Dagger", damage: { n: 1, d: 6, type: "pierce" }, hand: 1, slot: 1, quality: 3 },
-        { type: "meleeWeapon", name: "Dagger", damage: { n: 1, d: 6, type: "pierce" }, hand: 1, slot: 1, quality: 3 },
-        { type: "meleeWeapon", name: "Dagger", damage: { n: 1, d: 6, type: "pierce" }, hand: 1, slot: 1, quality: 3 },
-        { type: "meleeWeapon", name: "Dagger", damage: { n: 1, d: 6, type: "pierce" }, hand: 1, slot: 1, quality: 3 },
-        { type: "meleeWeapon", name: "Dagger", damage: { n: 1, d: 6, type: "pierce" }, hand: 1, slot: 1, quality: 3 },
+        { type: "meleeWeapon", name: "Dagger", damage: { n: 1, d: 6, type: "pierce" }, hand: 1, slot: 1, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Dagger", damage: { n: 1, d: 6, type: "pierce" }, hand: 1, slot: 1, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Dagger", damage: { n: 1, d: 6, type: "pierce" }, hand: 1, slot: 1, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Dagger", damage: { n: 1, d: 6, type: "pierce" }, hand: 1, slot: 1, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Dagger", damage: { n: 1, d: 6, type: "pierce" }, hand: 1, slot: 1, quality: 3, trait: undefined },
 
-        { type: "meleeWeapon", name: "Cudgel", damage: { n: 1, d: 6, type: "bludgeon" }, hand: 1, slot: 1, quality: 3 },
-        { type: "meleeWeapon", name: "Cudgel", damage: { n: 1, d: 6, type: "bludgeon" }, hand: 1, slot: 1, quality: 3 },
+        { type: "meleeWeapon", name: "Cudgel", damage: { n: 1, d: 6, type: "bludgeon" }, hand: 1, slot: 1, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Cudgel", damage: { n: 1, d: 6, type: "bludgeon" }, hand: 1, slot: 1, quality: 3, trait: undefined },
 
-        { type: "meleeWeapon", name: "Sickle", damage: { n: 1, d: 6, type: "slash" }, hand: 1, slot: 1, quality: 3 },
+        { type: "meleeWeapon", name: "Sickle", damage: { n: 1, d: 6, type: "slash" }, hand: 1, slot: 1, quality: 3, trait: undefined },
 
-        { type: "meleeWeapon", name: "Mace", damage: { n: 1, d: 8, type: "bludgeon" }, hand: 1, slot: 2, quality: 3 },
-        { type: "meleeWeapon", name: "Mace", damage: { n: 1, d: 8, type: "bludgeon" }, hand: 1, slot: 2, quality: 3 },
+        { type: "meleeWeapon", name: "Mace", damage: { n: 1, d: 8, type: "bludgeon" }, hand: 1, slot: 2, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Mace", damage: { n: 1, d: 8, type: "bludgeon" }, hand: 1, slot: 2, quality: 3, trait: undefined },
 
-        { type: "meleeWeapon", name: "Spear", damage: { n: 1, d: 8, type: "pierce" }, hand: 1, slot: 2, quality: 3 },
-        { type: "meleeWeapon", name: "Spear", damage: { n: 1, d: 8, type: "pierce" }, hand: 1, slot: 2, quality: 3 },
-        { type: "meleeWeapon", name: "Spear", damage: { n: 1, d: 8, type: "pierce" }, hand: 1, slot: 2, quality: 3 },
-        { type: "meleeWeapon", name: "Spear", damage: { n: 1, d: 8, type: "pierce" }, hand: 1, slot: 2, quality: 3 },
+        { type: "meleeWeapon", name: "Spear", damage: { n: 1, d: 8, type: "pierce" }, hand: 1, slot: 2, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Spear", damage: { n: 1, d: 8, type: "pierce" }, hand: 1, slot: 2, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Spear", damage: { n: 1, d: 8, type: "pierce" }, hand: 1, slot: 2, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Spear", damage: { n: 1, d: 8, type: "pierce" }, hand: 1, slot: 2, quality: 3, trait: undefined },
 
-        { type: "meleeWeapon", name: "Hand ax/sword", damage: { n: 1, d: 8, type: "slash" }, hand: 1, slot: 2, quality: 3 },
+        { type: "meleeWeapon", name: "Hand ax/sword", damage: { n: 1, d: 8, type: "slash" }, hand: 1, slot: 2, quality: 3, trait: undefined },
 
-        { type: "meleeWeapon", name: "Eku", damage: { n: 1, d: 8, type: "slash or bludgeon" }, hand: 2, slot: 3, quality: 3 },
+        { type: "meleeWeapon", name: "Eku", damage: { n: 1, d: 8, type: "slash or bludgeon" }, hand: 2, slot: 3, quality: 3, trait: undefined },
 
-        { type: "meleeWeapon", name: "Hammer", damage: { n: 1, d: 10, type: "bludgeon" }, hand: 2, slot: 3, quality: 3 },
+        { type: "meleeWeapon", name: "Hammer", damage: { n: 1, d: 10, type: "bludgeon" }, hand: 2, slot: 3, quality: 3, trait: undefined },
 
-        { type: "meleeWeapon", name: "Harpoon", damage: { n: 1, d: 10, type: "pierce" }, hand: 2, slot: 3, quality: 3 },
-        { type: "meleeWeapon", name: "Harpoon", damage: { n: 1, d: 10, type: "pierce" }, hand: 2, slot: 3, quality: 3 },
+        { type: "meleeWeapon", name: "Harpoon", damage: { n: 1, d: 10, type: "pierce" }, hand: 2, slot: 3, quality: 3, trait: undefined },
+        { type: "meleeWeapon", name: "Harpoon", damage: { n: 1, d: 10, type: "pierce" }, hand: 2, slot: 3, quality: 3, trait: undefined },
 
-        { type: "meleeWeapon", name: "Ax/Longsword", damage: { n: 1, d: 10, type: "slash" }, hand: 2, slot: 3, quality: 3 },
+        { type: "meleeWeapon", name: "Ax/Longsword", damage: { n: 1, d: 10, type: "slash" }, hand: 2, slot: 3, quality: 3, trait: undefined },
     ];
     return table[rollD(20) - 1];
 }
@@ -262,28 +307,28 @@ function helmetAndShield() {
 
 function rangedWeapon() {
     var table = [
-        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2 },
-        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2 },
-        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2 },
-        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2 },
-        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2 },
-        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2 },
-        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2 },
-        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2 },
-        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2 },
-        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2 },
-        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2 },
-        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2 },
+        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2, trait: undefined },
+        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2, trait: undefined },
+        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2, trait: undefined },
+        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2, trait: undefined },
+        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2, trait: undefined },
+        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2, trait: undefined },
+        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2, trait: undefined },
+        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2, trait: undefined },
+        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2, trait: undefined },
+        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2, trait: undefined },
+        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2, trait: undefined },
+        { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2, trait: undefined },
 
-        { type: "rangedWeapon", name: "Bow", ammo: "Arrows", damage: { n: 1, d: 6 }, slot: 2, hand: 2, quality: 3 },
-        { type: "rangedWeapon", name: "Bow", ammo: "Arrows", damage: { n: 1, d: 6 }, slot: 2, hand: 2, quality: 3 },
-        { type: "rangedWeapon", name: "Bow", ammo: "Arrows", damage: { n: 1, d: 6 }, slot: 2, hand: 2, quality: 3 },
-        { type: "rangedWeapon", name: "Bow", ammo: "Arrows", damage: { n: 1, d: 6 }, slot: 2, hand: 2, quality: 3 },
-        { type: "rangedWeapon", name: "Bow", ammo: "Arrows", damage: { n: 1, d: 6 }, slot: 2, hand: 2, quality: 3 },
-        { type: "rangedWeapon", name: "Bow", ammo: "Arrows", damage: { n: 1, d: 6 }, slot: 2, hand: 2, quality: 3 },
+        { type: "rangedWeapon", name: "Bow", ammo: "Arrows", damage: { n: 1, d: 6 }, slot: 2, hand: 2, quality: 3, trait: undefined },
+        { type: "rangedWeapon", name: "Bow", ammo: "Arrows", damage: { n: 1, d: 6 }, slot: 2, hand: 2, quality: 3, trait: undefined },
+        { type: "rangedWeapon", name: "Bow", ammo: "Arrows", damage: { n: 1, d: 6 }, slot: 2, hand: 2, quality: 3, trait: undefined },
+        { type: "rangedWeapon", name: "Bow", ammo: "Arrows", damage: { n: 1, d: 6 }, slot: 2, hand: 2, quality: 3, trait: undefined },
+        { type: "rangedWeapon", name: "Bow", ammo: "Arrows", damage: { n: 1, d: 6 }, slot: 2, hand: 2, quality: 3, trait: undefined },
+        { type: "rangedWeapon", name: "Bow", ammo: "Arrows", damage: { n: 1, d: 6 }, slot: 2, hand: 2, quality: 3, trait: undefined },
 
-        { type: "rangedWeapon", name: "Crossbow", ammo: "Bolts", damage: { n: 1, d: 8 }, slot: 3, hand: 2, quality: 3 },
-        { type: "rangedWeapon", name: "Crossbow", ammo: "Bolts", damage: { n: 1, d: 8 }, slot: 3, hand: 2, quality: 3 },
+        { type: "rangedWeapon", name: "Crossbow", ammo: "Bolts", damage: { n: 1, d: 8 }, slot: 3, hand: 2, quality: 3, trait: undefined },
+        { type: "rangedWeapon", name: "Crossbow", ammo: "Bolts", damage: { n: 1, d: 8 }, slot: 3, hand: 2, quality: 3, trait: undefined },
     ];
     return table[rollD(20) - 1];
 }
