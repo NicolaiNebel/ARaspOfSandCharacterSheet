@@ -99,6 +99,11 @@ export var allItems = {
         { type: "rangedWeapon", name: "Sling", ammo: "N/A", damage: { n: 1, d: 4 }, slot: 1, hand: 1, quality: 2, trait: undefined },
         { type: "rangedWeapon", name: "Harpoonbow", ammo: "Harpoonbow Shots", damage: { n: 1, d: 10 }, slot: 4, hand: 2, quality: 3, trait: undefined }
     ],
+    ammo: [
+        { type: "generalItem", name: "Arrows (Up to 20)" },
+        { type: "generalItem", name: "Bolts (Up to 20)" },
+        { type: "generalItem", name: "Harpoonbow Shots (Up to 4)" },
+    ],
     armor: [
         { type: "armor", name: "Canvas tunic", defense: 12, slot: 1, quality: 3 },
         { type: "armor", name: "Iron-scale mail", defense: 14, slot: 3, quality: 5 },
@@ -135,7 +140,7 @@ export var allItems = {
         { type: "generalItem", name: "Drill", slot: 1 },
         { type: "generalItem", name: "Face Paint", slot: 1 },
         { type: "generalItem", name: "Fake Jewels", slot: 1 },
-        { type: "generalItem", name: "Fishing Rod", slot: 1 },
+        { type: "generalItem", name: "Fishing Rod (and Tackle)", slot: 1 },
         { type: "generalItem", name: "Glowing Algae Globe", slot: 1 },
         { type: "generalItem", name: "Glue", slot: 1 },
         { type: "generalItem", name: "Grappling Hook", slot: 1 },
@@ -168,6 +173,7 @@ export var allItems = {
         { type: "generalItem", name: "Saw", slot: 1 },
         { type: "generalItem", name: "Scrimshaw Kit", slot: 1 },
         { type: "generalItem", name: "Shovel", slot: 1 },
+        { type: "generalItem", name: "Slippery Oil", slot: 1 },
         { type: "generalItem", name: "Slug Jar", slot: 0 },
         { type: "generalItem", name: "Small Bell", slot: 1 },
         { type: "generalItem", name: "Soap", slot: 1 },
@@ -178,6 +184,7 @@ export var allItems = {
         { type: "generalItem", name: "Tongs", slot: 1 },
         { type: "generalItem", name: "Torch, 2x(light for 3 rooms)", slot: 1 },
         { type: "generalItem", name: "Twine", slot: 1 },
+        { type: "generalItem", name: "Vial of Urchin Venom", slot: 1 },
         { type: "generalItem", name: "Weighted Net", slot: 1 },
         { type: "generalItem", name: "Whistle", slot: 1 },
     ],
@@ -226,6 +233,43 @@ export var allItems = {
         { type: "slugEgg", name: "Slug Egg(s): Yellow w/ black speckles", slot: 1, quantity: 1 },
     ],
 }
+
+export var mutations = [
+    { name: "Accurate", desc: "You gain an innate [+] to all Attacks." },
+    { name: "Bacterial Hair", desc: "You grow fleshy “hair”. It keeps you warm. You now Resist Cold." },
+    { name: "Camouflage", desc: "You grow fleshy natural looking aberations on your skin.They can appear like seaweed, algae, stone and sand.This gives you[+] on checks to be stealthy." },
+    { name: "Charming Colors", desc: "Your skin cells are able to shift at will into other colors. They are constantly pulsing and can be used to communicate with Cephalopods. Once per rest you can cause a target to make a CHA save or be Charmed. You gain [+] on Saves related to sneaking." },
+    { name: "Cold Current", desc: "You may choose to activate an aura that deals 1D4 Cold damage to any creatures within 5ft of you. You are covered in a thick slimy white fur." },
+    { name: "Communicative Colors", desc: "Your skin cells are able to shift at will into other colors. They are constantly pulsing and can be used to communicate with Cephalopods." },
+    { name: "Coral Skin", desc: "You grow spiny protrusions as armor on your skin. They appear to be symbiotic corals that grow fairly rapidly. You have a natural AC of 14 and Reist Poison but can't wear normal armor." },
+    { name: "Cowardly", desc: "Decrease your Heir's Morale by 1. This mutation stacks." },
+    { name: "Detect Magic", desc: "Your eyes become compound and multifaceted. You no longer blink.They are beautiful and disconcerting. Once per rest you may cast Detect Magic." },
+    { name: "Dotter Sniffer", desc: "Your nose changes to a large Dotter nose and you grow long whiskers.Once per rest you can cast the spell Sniff." },
+    { name: "Echolocation", desc: "Your forehead expands to make room for the resonating space you will need in your sinuses. Once per rest you can gain blindsight. Must make loud clicking noises when you use it." },
+    { name: "Electromagnetic Sensitivity", desc: "Once per rest you may focus your mind to sense all creatures in a one room radius of the current room you are in. You may know how large they are and how many there are. Downside.you have a hammer head. It's horrible. You are horrible. My god is it weird looking." },
+    { name: "Elemental Attunement", desc: "Your hair turns into long thick tendrils that move on their own.The color is determined by the A-Mana-Me whose Sand you consumed. You gain Resistance to the Element that the A-Mana-Me was attuned to." },
+    { name: "Frenzy", desc: "When you deal damage you go into a frenzy and lose the ability to tell friend from foe. You then attack the closest creature to you at random. When frenzied add [+] to any Attack you do." },
+    { name: "'Gilly' Suit", desc: "Fleshy barbles and scales grow on your back that resemble the detritous and vegetation of the seafloor.  You gain[+] on sneaking when prone." },
+    { name: "Glowing Saliva", desc: "Your saliva glows blue. So the inside of your mouth glows blue. About the brightness of a candle." },
+    { name: "Hunter’s and Sach’s", desc: "Your nervous system grows. Under your skin your nerves pulse a white-blue light. Once per day you may cause creatures adjacent to you make a CON Save or take 1D6 Electric Damage and Stunned for one turn." },
+    { name: "Iron Scales", desc: "You grow scales that are hard as scalemail. You have a natural AD of 14." },
+    { name: "Leaper", desc: "Your grow a muscular tail that you can use to jump vast distances. You gain [+] on all Saves where you are jumping." },
+    { name: "Low-light", desc: "Your eyes bulge and grow. You can see in the dark." },
+    { name: "Pack Hunter", desc: "When adjacent to allies you get +1 to your Morale and[+] to their Attack and Damage rolls." },
+    { name: "Plumage", desc: "No benefit. You just have feathers now. They’re white and quite pretty when you keep them clean." },
+    { name: "Resonance", desc: "Your forehead becomes massive to make room for the resonating space you will need in your sinuses. Gain blindsight. Must make loud clicking noises to see however." },
+    { name: "Shrewd", desc: "You have seen countless deals over the Hermit's long life. You get a shop discount of 25% everywhere." },
+    { name: "Shrimp Claws", desc: "Your hands change into massive claws. They are unwieldy so you can’t wield a weapon anymore but your unarmed attack deals 1D10 Bludgeoning." },
+    { name: "Slippery", desc: "You secrete a slimy mucus. [+] To Saves to break free of Grapples. Can harvest it while resting to create a bottle of non-flammable slippery oil." },
+    { name: "Spikey", desc: "Your skin is covered in spikey protrusions.You can’t wear armor, but you gain a Natural Armor of 13. Plus, when you are struck you deal 1D4 Piercing Damage to the Attacker." },
+    { name: "Sticky", desc: "You excrete a sticky mucous from your hands and feet that allow you to easily climb walls and ceilings. You gain a climb speed equal to your move speed." },
+    { name: "Telepathy", desc: "Your hair falls out and the top of your head mimics the shape and texture of a brain coral.You may send your thoughts silently to a target within the same room." },
+    { name: "Tentacles", desc: "Your arms split in two. You have four arms now. They can do everything your previous arms could do but multiplied by two." },
+    { name: "Toxic Skin", desc: "Your skin is covered in a poisonous mucous or some such. Creatures that touch your skin must make a CON Save or Poisoned(2 Poison Damage per turn, save ends)." },
+    { name: "Tremorsense", desc: "You can see via tremorsense in the room you are in. You lose your eyes." },
+    { name: "Vampirism", desc: "You mouth turns into a large proboscis that allows you to create holes in the skin of willing or unconscious creatures. You crave blood and must use it as a food source. Your skin becomes pale white and you can see your blood vessels. 1HD equals 1 Ration for you." },
+    { name: "Vibrant", desc: "Some part of your body becomes vibrantly colored or marked.This could be your hair, skin, eyes, nails, etc." },
+];
 
 function weapon() {
     var table = [
@@ -554,7 +598,8 @@ export function newProfession(oldProfession, keepProfession, professionLevels) {
 }
 
 export function newXp(xp, died) {
-    return died ? Math.floor(xp / 6) : xp;
+    //return died ? Math.floor(xp / 6) : xp;
+    return Math.floor(xp / 6); // page 20
 }
 
 function maxHp() {

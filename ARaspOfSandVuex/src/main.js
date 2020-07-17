@@ -41,6 +41,7 @@ const store = new Vuex.Store({
         },
         family: { initialized: false, lastName: "", ancestorList: [] },
         heirloomStash: [],
+        mutations: [],
         id: 1,
 
         professionLevels: {
